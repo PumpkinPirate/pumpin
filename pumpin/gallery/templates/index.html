@@ -54,8 +54,10 @@
  <div id="upload">
   <h3 class="before">Step 1. Lift it!</h3>
   <h3 class="after">Step 1. Lifted!</h3>
-  <form id="file_upload">
-   {% include "upload_form.html" %}
+  <form id="file_upload" action="." method="post" enctype='multipart/form-data'>
+    {{ upload_form.as_p }}
+    {% csrf_token %}
+    <button id="upload_button">Upload</button>
   </form>
  </div>
  <div id="positioning">

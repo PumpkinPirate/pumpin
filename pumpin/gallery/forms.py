@@ -14,3 +14,7 @@ class UploadImageForm(forms.ModelForm):
     
     class Meta:
         model = UploadedImage
+        exclude = ['secret']
+
+class SubmitImageForm(forms.Form):
+    uploaded_image = forms.CharField
