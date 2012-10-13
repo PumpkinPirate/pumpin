@@ -9,10 +9,37 @@ body, html {
   margin: 0 auto;
   position: relative;
 }
+
+#header h1 {
+  text-align: center;
+  margin: 25px 0 35px;
+  font-size: 5.5em;
+  letter-spacing: -2px;
+  font-family: Helvetica, arial, sans-serif;
+}
+
 #pictures {
   float: right;
-  width: 600px;
+  width: 620px;
 }
+
+#feature {
+  position: relative;
+}
+#overlay {
+  Position: absolute;
+  top: 0;
+  left: 0;
+  width: 620px;
+  height: 465px;
+}
+#feature img {
+  width: 620px;
+  height: 465px;
+  border: 1px solid #CCC;
+  background: #EFEFEF;
+}
+
 #sidebar {
   width: 250px;
   float: left;
@@ -25,4 +52,41 @@ body, html {
 
 #intro, #upload, #positioning {
   margin-bottom: 30px;
+}
+
+#intro, #upload, #positioning {
+  margin-bottom: 30px;
+}
+
+#tray {
+  height: 383px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #CCC;
+  padding: 10px;
+}
+#tray img {
+  width: 120px;
+  height: 90px;
+  margin: 10px;
+  border: 1px solid #CCC;
+  background: #EFEFEF;
+}
+
+#tabs {
+  margin: 15px 0 0;
+  padding: 0 0 0 16px;
+  position: relative;
+  top: 1px;
+}
+#tabs a {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid;
+  background: #EFEFEF;
+  border-color: #CCC #CCC #CCC #CCC;
+}
+#tabs a.active {
+  background-color: #FFF;
+  border-color: #CCC #CCC #FFF #CCC;
 }
