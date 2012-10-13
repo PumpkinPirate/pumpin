@@ -17,12 +17,12 @@
  </div>
  <div id="popular_tray" class="tray">
    {% for image in popular %}
-     <img src="{{ image.thumbnail.url }}">
+     <a href="{{ image.get_absolute_url }}"><img src="{{ image.thumbnail.url }}"></a>
    {% endfor %}
  </div>
  <div id="latest_tray" class="tray">
    {% for image in latest %}
-     <img src="{{ image.thumbnail.url }}">
+     <a href="{{ image.get_absolute_url }}"><img src="{{ image.thumbnail.url }}"></a>
    {% endfor %}
  </div>
 </div>

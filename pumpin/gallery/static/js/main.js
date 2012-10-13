@@ -61,4 +61,13 @@ $(function () {
         $("#id_overlay").val(self.attr("data-overlay-id"))
         chooseOverlay()
     })
+    
+    $("#report").click(function () {
+        var self = $(this)
+        $.get(self.attr("href"), function() {
+            document.location.reload()
+        })
+        
+        return false
+    })
 })
