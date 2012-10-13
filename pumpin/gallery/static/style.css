@@ -116,6 +116,25 @@ body, html {
   color: #111;
 }
 
+#composer {
+  float: right;
+}
+#overlay_choices {
+  height: auto;
+  overflow: hidden;
+  padding: 15px 0;
+  border: none;
+}
+#overlay_choices.tray img {
+  border: none;
+  background: transparent;
+  border none;
+  width: auto;
+  height: 150px;
+  cursor: pointer;
+  margin: 0 35px 0 0;
+}
+
 #upload {
   padding: 20px 0 25px;
   border: 1px solid #CCC;
@@ -125,6 +144,34 @@ body, html {
   padding: 0 0 25px;
   border-bottom: 1px solid #CCC;
 }
+#composer h3 {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 2em;
+  margin: 0; padding: 25px 0 20px;
+  float: left;
+}
+#composer button {
+  display: block;
+  border: 1px solid #a5011e;
+  background: #fc1d3c;
+  font-size: 16px;
+  border-radius: 3px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px 0;
+  padding: 5px 25px;
+  margin: 20px auto;
+  cursor: pointer;
+  position: relative;
+  text-transform: uppercase;
+  color: #FFF;
+}
+#composer button:hover {
+  background: #ff3c4a;
+}
+#overlay_choices {
+  clear: both;
+}
+#composer form { float: right; }
 
 #file_upload p {
   position: relative;
@@ -146,6 +193,9 @@ body, html {
 
 #intro, #upload, #positioning {
   margin-bottom: 25px;
+}
+#intro.composer {
+  color: #999 !important;
 }
 
 .tray {
