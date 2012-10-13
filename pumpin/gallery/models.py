@@ -59,4 +59,4 @@ class SubmittedImage(models.Model):
     
     @classmethod
     def public_objects(cls):
-        return cls.objects.filter(is_public=True, mod_status__in=[0,1,2])
+        return cls.objects.filter(is_public=True, mod_status__in=[0,2])

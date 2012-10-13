@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Moderation Queue</h2>
+{% for image in object_list %}
+<div class="image_moderate">
+  <img src="{{ image.image.url }}">
+  <form action="{% url set_status secret=image.secret %}" method="post">
+    {% csrf_token %}
+    <button name="new_status" value="2">Approve</button>
+    <button name="new_status" value="3">Reject</button>
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

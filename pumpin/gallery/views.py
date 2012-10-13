@@ -1,7 +1,11 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, View, ListView
+from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, FormView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from pumpin.gallery.models import *
 from pumpin.gallery.forms import *
@@ -51,3 +55,47 @@ class SumbittedImageView(DetailView):
         obj.view_count += 1
         obj.save()
         return obj
+
+class ReportImageView(SingleObjectMixin, View):
+    model = SubmittedImage
+    slug_field = 'secret'
+    slug_url_kwarg = 'secret'
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.mod_status == 0:
+            self.object.mod_status = 1
+            self.object.save()
+            return HttpResponse("1", mimetype="application/json")
+        
+        return HttpResponse("0", mimetype="application/json")
+    
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
+class ModerateView(ListView):
+    queryset = SubmittedImage.objects.filter(mod_status=1)
+    template_name="moderate.html"
+    
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ModerateView, self).dispatch(*args, **kwargs)
+
+
+class SetImageStatusView(SingleObjectMixin, View):
+    model = SubmittedImage
+    slug_field = 'secret'
+    slug_url_kwarg = 'secret'
+    
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SetImageStatusView, self).dispatch(*args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        
+        self.object.mod_status = int(self.request.POST['new_status'])
+        self.object.save()
+        
+        return HttpResponseRedirect(reverse("moderate"))

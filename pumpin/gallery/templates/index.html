@@ -6,7 +6,7 @@
   <div id="overlay">
    <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
    <input type="text" value="http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" />
-   <a href="[[ javascript:report; ]]" id="report">Report</a>
+   <a href="{% url report secret=popular.0.secret %}" id="report">Report</a>
    <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
   </div>
   <img src="{{ popular.0.image.url }}" />

@@ -7,7 +7,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^', include('pumpin.gallery.urls')),
-
+    (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

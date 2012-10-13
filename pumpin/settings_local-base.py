@@ -37,6 +37,10 @@ TIME_ZONE = 'US/Pacific'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = join(siteDir, 'static')
 
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = join(siteDir, 'media')
+
 TEMPLATE_DIRS = (
     join(siteDir, 'templates/gullible'),
     #join(siteDir, 'templates/nampv'),
