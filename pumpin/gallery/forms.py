@@ -12,6 +12,9 @@ from pumpin.gallery.models import *
 target_width = 620
 target_height = 465
 
+thumb_width = 120
+thumb_height = 90
+
 class UploadImageForm(forms.ModelForm):
     def __init__(self, *a, **k):
         k['label_suffix'] = ""
@@ -56,7 +59,7 @@ class SubmitImageForm(forms.Form):
     overlay_dict = dict(overlay_choices)
     
     
-    overlay = forms.ChoiceField(choices = overlay_choices)
+    overlay = forms.ChoiceField(choices=overlay_choices, widget=forms.HiddenInput, initial=1)
     x = forms.IntegerField(widget=forms.HiddenInput)
     y = forms.IntegerField(widget=forms.HiddenInput)
     
@@ -71,7 +74,11 @@ class SubmitImageForm(forms.Form):
         
         outfile = StringIO()
         image.save(outfile, "jpeg", quality=90)
+        instance.image.save("submitted.jpg", ContentFile(outfile.getvalue()), save=False)
         
-        instance.image.save("submitted.jpg", ContentFile(outfile.getvalue()))
+        image = image.resize([thumb_width, thumb_height], Image.ANTIALIAS)
+        outfile = StringIO()
+        image.save(outfile, "jpeg", quality=90)
+        instance.thumbnail.save("submitted-th.jpg", ContentFile(outfile.getvalue()), save=True)
+        
         return instance
-        

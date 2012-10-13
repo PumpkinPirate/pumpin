@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import CreateView, FormView
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -15,6 +15,8 @@ class IndexView(CreateView):
         data = super(IndexView, self).get_context_data(**kwargs)
         
         data['upload_form'] = UploadImageForm()
+        data['latest'] = SubmittedImage.public_objects().order_by("-timestamp")[:20]
+        data['popular'] = SubmittedImage.public_objects().order_by("-view_count")[:20]
         
         return data
 
@@ -37,4 +39,15 @@ class EditImageView(FormView):
         
         self.success_url = instance.get_absolute_url()
         return super(EditImageView, self).form_valid(form)
-        
+
+class SumbittedImageView(DetailView):
+    model = SubmittedImage
+    slug_field = 'secret'
+    slug_url_kwarg = 'secret'
+    template_name = "image_detail.html"
+    
+    def get_object(self):
+        obj = super(SumbittedImageView, self).get_object()
+        obj.view_count += 1
+        obj.save()
+        return obj

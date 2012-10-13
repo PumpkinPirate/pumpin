@@ -148,19 +148,22 @@ body, html {
   margin-bottom: 25px;
 }
 
-#tray {
+.tray {
   height: 383px;
   overflow-y: scroll;
   overflow-x: hidden;
   border: 1px solid #CCC;
   padding: 10px;
 }
-#tray img {
+.tray img {
   width: 120px;
   height: 90px;
   margin: 10px;
   border: 1px solid #CCC;
   background: #EFEFEF;
+}
+#latest_tray {
+  display: none;
 }
 
 #tabs {

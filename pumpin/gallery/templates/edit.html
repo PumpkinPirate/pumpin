@@ -10,6 +10,12 @@
   </div>
 </div>
 
+<div id="overlay_choices" class="tray">
+  {% for i, img in form.overlay_choices %}
+    <img data-overlay-id="{{i}}" src={{ STATIC_URL }}{{ img }}>
+  {% endfor %}
+</div>
+
 <form action="." method="post">
   {{ form.as_p }}
   {% csrf_token %}

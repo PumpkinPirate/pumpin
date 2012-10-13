@@ -5,47 +5,28 @@
  <div id="feature">
   <div id="overlay">
    <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
-   <input type="text" value="http://pumpingironwithpaulryan.com/[[ page_URL ]]" />
+   <input type="text" value="http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" />
    <a href="[[ javascript:report; ]]" id="report">Report</a>
    <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
   </div>
-  <img src="[[ ]]" />
+  <img src="{{ popular.0.image.url }}" />
  </div>
  <div id="tabs">
-  <a href="popular" id="popular" class="active">Popular</a>
-  <a href="latest" id="latest">Latest</a>
+  <a href="" id="popular" class="active">Popular</a>
+  <a href="" id="latest">Latest</a>
  </div>
- <div id="tray">
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
-  <img src="" />
+ <div id="popular_tray" class="tray">
+   {% for image in popular %}
+     <img src="{{ image.thumbnail.url }}">
+   {% endfor %}
+ </div>
+ <div id="latest_tray" class="tray">
+   {% for image in latest %}
+     <img src="{{ image.thumbnail.url }}">
+   {% endfor %}
  </div>
 </div>
-<form id="create">
- <div id="image_maker">
-  <div id="ryan_overlay"></div>
-  <img src="" />
- </div>
- <div id="ryans">
-  <img src="" id="ryan1" class="active" />
-  <img src="" id="ryan2" />
-  <img src="" id="ryan3" />
-  <img src="" id="ryan4" />
- </div>
- <button type="submit">I'm Done!</button>
-</form> 
+
 <div id="sidebar">
  <div id="intro">
   <h2>Pump it Up</h2>

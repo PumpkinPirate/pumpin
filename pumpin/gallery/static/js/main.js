@@ -44,4 +44,21 @@ $(function () {
     $("#id_overlay").change(chooseOverlay)
     
     $("#edit_box").mousedown(positionMousedown)
+    
+    $("#tabs a").click(function () {
+        var self = $(this)
+        $("#tabs a").remove_class("active")
+        self.add_class("active")
+        
+        $(".tray").hide()
+        $("#" + self.id() + "_tray").show()
+        
+        return false
+    })
+    
+    $("#overlay_choices img").click(function () {
+        var self = $(this)
+        $("#id_overlay").val(self.attr("data-overlay-id"))
+        chooseOverlay()
+    })
 })
