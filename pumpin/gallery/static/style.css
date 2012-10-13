@@ -30,9 +30,9 @@ body, html {
 
 #overlay {
  opacity: 0;
- -webkit-transition: opacity 50ms; 
+ -webkit-transition: opacity 500ms; 
 }
-#feature:hover #overlay { opacity: 1; -webkit-transition: opacity 500ms; }
+#feature:hover #overlay { opacity: 1; }
 
 #overlay {
   background: rgba(33,33,33,.8);
