@@ -28,24 +28,13 @@ class EditImageView(FormView):
         data = super(EditImageView, self).get_context_data(**kwargs)
         data['uploaded_image'] = self.uploaded_image
         return data
-
-
-
-
-
-
-
-class AjaxView(object):
-    def form_valid(*args, **kwargs):
-        html = super(AjaxView, self).form_valid(*args, **kwargs).content
-        response = HttpResponse(mimetype="application/json")
-        simplejson.dump({'success':True, 'html':html, image: self.instance.image.url()}, response)
-        return response
     
-    def form_invalid(*args, **kwargs):
-        html = super(AjaxView, self).form_invalid(*args, **kwargs).content
-        response = HttpResponse(mimetype="application/json")
-        simplejson.dump({'success':False, 'html':html}, response)
-        return response
-
-    
+    def form_valid(self, form):
+        self.uploaded_image = get_object_or_404(UploadedImage, secret=self.kwargs['secret'])
+        
+        form.uploaded_image = self.uploaded_image
+        instance = form.save()
+        
+        self.success_url = instance.get_absolute_url()
+        return super(EditImageView, self).form_valid(form)
+        

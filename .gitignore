@@ -28,3 +28,6 @@ pip-log.txt
 
 #Local settings
 settings_local.py
+
+/static
+/media

@@ -4,8 +4,14 @@ import random
 from django.db import models
 from django.core.urlresolvers import reverse
 
+def gen_secret(instance):
+    if not instance.secret:
+        chars = "0123456789abcdefghijklmnopABCDEFGHIJKLMNOP-_"
+        instance.secret = "".join(random.choice(chars) for i in xrange(32))
+
 def uploaded_image_path(instance, filename):
     extension = filename.split(".")[-1]
+    gen_secret(instance)
     return "uploaded/%s/%s.%s" % (strftime("%Y-%m-%d"), instance.secret, extension)
 
 
@@ -16,10 +22,7 @@ class UploadedImage(models.Model):
     is_public = models.BooleanField(verbose_name="Display this image in the public gallery")
     
     def save(self, *args, **kwargs):
-        if not self.secret:
-            chars = "0123456789abcdefghijklmnopABCDEFGHIJKLMNOP-_"
-            self.secret = "".join(random.choice(chars) for i in xrange(32))
-        
+        gen_secret(self)
         super(UploadedImage, self).save(*args, **kwargs)
     
     def get_absolute_url(self):
@@ -30,8 +33,20 @@ mod_choices = ((0, "unmoderated"),
                (2, "approved"),
                (3, "rejected"))
 
+def submitted_image_path(instance, filename):
+    gen_secret(instance)
+    return "submitted/%s/%s.jpg" % (strftime("%Y-%m-%d"), instance.secret)
+
 class SubmittedImage(models.Model):
-    image = models.ImageField(upload_to=uploaded_image_path)
+    image = models.ImageField(upload_to=submitted_image_path)
     timestamp = models.DateTimeField(auto_now_add=True)
+    secret = models.CharField(max_length=32, unique=True)
     is_public = models.BooleanField(verbose_name="Display this image in the public gallery")
     mod_status = models.IntegerField(choices=mod_choices, default=0)
+    
+    def save(self, *args, **kwargs):
+        gen_secret(self)
+        super(SubmittedImage, self).save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return "/"
