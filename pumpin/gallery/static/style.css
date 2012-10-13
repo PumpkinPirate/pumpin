@@ -182,3 +182,24 @@ body, html {
 }
 
 .clear { clear: both; }
+
+#edit_box {
+  width: 620px;
+  height: 465px;
+  position: relative;
+  overflow: hidden;
+}
+
+#overlay_box {
+  width: 620px;
+  height: 465px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#overlay_box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

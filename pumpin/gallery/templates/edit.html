@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<img src="{{ uploaded_image.image.url }}">
+<div id="edit_box">
+  <img src="{{ uploaded_image.image.url }}">
+  <div id="overlay_box">
+    {% for i, img in form.overlay_choices %}
+      <img id="overlay_{{ i }}" src={{ STATIC_URL }}{{ img }}>
+    {% endfor %}
+  </div>
+</div>
+
 <form action="." method="post">
   {{ form.as_p }}
   {% csrf_token %}

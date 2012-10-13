@@ -45,20 +45,20 @@ class UploadImageForm(forms.ModelForm):
         right = (width + target_width) / 2
         image = image.crop([left, top, right, bottom])
         
-        image.save(instance.image.path)
+        image.save(instance.image.path, quality=90)
         
         return instance
 
 
-overlays = ((1, "img/overlay/ryan_01.png"),
-            (2, "img/overlay/ryan_02.png"),)
-
-overlay_dict = dict(overlays)
-
 class SubmitImageForm(forms.Form):
-    overlay = forms.ChoiceField(choices = overlays)
-    x = forms.IntegerField()
-    y = forms.IntegerField()
+    overlay_choices = ((1, "img/overlay/ryan_01.png"),
+                       (2, "img/overlay/ryan_02.png"),)
+    overlay_dict = dict(overlay_choices)
+    
+    
+    overlay = forms.ChoiceField(choices = overlay_choices)
+    x = forms.IntegerField(widget=forms.HiddenInput)
+    y = forms.IntegerField(widget=forms.HiddenInput)
     
     def save(self):
         instance = SubmittedImage()
@@ -66,11 +66,11 @@ class SubmitImageForm(forms.Form):
         instance.is_public = self.uploaded_image.is_public
         
         image = Image.open(self.uploaded_image.image.path)
-        overlay = Image.open(join(settings.STATIC_ROOT, overlay_dict[int(self.cleaned_data['overlay'])]))
+        overlay = Image.open(join(settings.STATIC_ROOT, self.overlay_dict[int(self.cleaned_data['overlay'])]))
         image.paste(overlay, (self.cleaned_data['x'], self.cleaned_data['y']), overlay)
         
         outfile = StringIO()
-        image.save(outfile, "jpeg")
+        image.save(outfile, "jpeg", quality=90)
         
         instance.image.save("submitted.jpg", ContentFile(outfile.getvalue()))
         return instance
