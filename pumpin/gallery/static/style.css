@@ -8,6 +8,7 @@ body, html {
   width: 900px;
   margin: 0 auto;
   position: relative;
+  padding: 0 0 50px;
 }
 
 #header h1 {
@@ -94,12 +95,54 @@ body, html {
 
 #sidebar p { margin: 0; padding: 0; }
 
-#intro, #upload, #positioning {
-  margin-bottom: 30px;
+#sidebar h2 { 
+  font-size: 2.5em;
+  margin: 0; padding: 0 0 5px;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+#sidebar h3 {
+  margin: 0;
+  padding: 0 0 5px;
+  font-size: 2em;
+  font-family: Helvetica, arial, sans-serif;
+  color: #999;
+}
+
+#sidebar .current h3 {
+  color: #111;
+}
+
+#upload {
+  padding: 20px 0 25px;
+  border: 1px solid #CCC;
+  border-width: 1px 0;
+}
+#positioning {
+  padding: 0 0 25px;
+  border-bottom: 1px solid #CCC;
+}
+
+#file_upload p {
+  position: relative;
+  padding: 0 0 10px 20px;
+}
+#id_is_public, #id_agree {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#id_image {
+  position: relative;
+  padding: 13px 0 10px;
+  left: -20px;
+}
+#upload_button {
+  margin: 5px 0 0;
 }
 
 #intro, #upload, #positioning {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 #tray {
@@ -134,3 +177,5 @@ body, html {
   background-color: #FFF;
   border-color: #CCC #CCC #FFF #CCC;
 }
+
+.clear { clear: both; }

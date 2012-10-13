@@ -19,8 +19,8 @@ class UploadImageForm(forms.ModelForm):
         
     
     image = forms.ImageField(label="")
-    agree = forms.BooleanField(required=True, label="I have the rights to this image; it's not porn")
-    is_public = forms.BooleanField(required=False, label="Display this image in the public gallery")
+    agree = forms.BooleanField(required=True, label="I've got the rights to upload this image, and it's not porn.")
+    is_public = forms.BooleanField(required=False, initial=True, label="Add to public gallery")
     
     class Meta:
         model = UploadedImage
