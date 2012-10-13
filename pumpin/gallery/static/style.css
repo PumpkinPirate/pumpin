@@ -28,8 +28,11 @@ body, html {
   position: relative;
 }
 
-#overlay { display: none; }
-#feature:hover #overlay { display: block; }
+#overlay {
+ opacity: 0;
+ -webkit-transition: opacity 50ms; 
+}
+#feature:hover #overlay { opacity: 1; -webkit-transition: opacity 500ms; }
 
 #overlay {
   background: rgba(33,33,33,.8);
