@@ -1,4 +1,5 @@
-body, html { 
+body, html {
+  background: #ebebeb;
   padding: 0; 
   margin: 0;
   font-size: 11px;
@@ -223,6 +224,7 @@ body, html {
 }
 
 .tray {
+  background: #F9F9F9;
   height: 383px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -258,8 +260,8 @@ body, html {
   border-color: #CCC #CCC #CCC #CCC;
 }
 #tabs a.active {
-  background-color: #FFF;
-  border-color: #CCC #CCC #FFF #CCC;
+  background-color: #F9F9F9;
+  border-color: #CCC #CCC #F9F9F9 #CCC;
 }
 
 .clear { clear: both; }
