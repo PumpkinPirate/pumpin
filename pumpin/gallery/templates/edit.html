@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<h3>Pick your Paul:</h3>
+<h3>Pick your Paul, then drag to reposition:</h3>
 <form action="." method="post">
   {{ form.as_p }}
   {% csrf_token %}
@@ -26,34 +26,5 @@
 </div>
 
 </div>
-
-
-<div id="sidebar">
- <div id="intro" class="composer">
-  <h2>Pump it Up</h2>
-  <p>Maybe you want to wail on your biceps along side the Wisconson Wonk. Maybe you want to provide extra words of support. Maybe you're just swooning over some muscles. Whatever the reason now's your chance to get ripped with Rep. Ryan.</p>
- </div>
- <div id="upload">
-  <h3 class="before">Step 1. Lifted!</h3>
-  <p>Great photo, great hustle! Keep it up, you're almost there!</p>
- </div>
- <div id="positioning" class="current">
-  <h3 class="before">Step 2. Work it!</h3>
-  <p>Pick the Paul Ryan that fits best in your photo. Then reposition Ryan (no pun intended) until you're completely satisfied, until you lose interest and give up, or until the heat death of the universe, whichever comes first.</p>
- </div>
- <div id="sidebar_share">
-  <h3>Step 3. Spread it!</h3>
-  <div class="before"><p>Share it when you're finished.</p></div>
-  <div class="after"><p>Does an topical politcal joke unshared on the internet make a lol? Instead of trying to figure that out, why don't you just share your lovely creation on Facebook or with the direct link below?</p>
-  <a href="[[ fb_share ]]">Share on Facebook</a>
-  <input type="text" value="[[ upload_URL ]]" id="share_link" />
-  <p>Look, we all love what you made. But maybe you're having second thoughts. Perhaps it's too great. Here's your eject button. This link will let you delete your upload.</p>
-  <input type="text" value="[[ delete_link ]]" id="delete_link" />
-  <p>Use this wisely. What's done cannot be undone, etc., etc.,</p>
-  </div>
- </div>
-</div>
-
-
 
 {% endblock %}

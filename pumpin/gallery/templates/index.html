@@ -8,7 +8,7 @@
 <div id="pictures">
  <div id="feature">
   <div id="overlay">
-   <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
+<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer/sharer.php?u=http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}','sharer','toolbar=0,status=0,width=626,height=350');return false;}</script><a rel="nofollow" href="http://www.facebook.com/sharer/sharer.php?u=http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" onclick="return fbs_click()" target="_blank" id="fb_overlay">Share on Facebook</a>
    <input id="feature_url" type="text" value="http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" />
    <a href="{% url report secret=popular.0.secret %}" id="report">Report</a>
    <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
@@ -32,7 +32,7 @@
   <h2>Pump it Up</h2>
   <p>Maybe you want to wail on your biceps along side the Wisconson Wonk. Maybe you want to provide extra words of support. Maybe you're just swooning over some muscles. Whatever the reason now's your chance to get ripped with Rep. Ryan.</p>
  </div>
- <div id="upload" class="current">
+ <div id="upload">
   <h3 class="before">Step 1. Lift it!</h3>
   <h3 class="after">Step 1. Lifted!</h3>
   <form id="file_upload" action="." method="post" enctype='multipart/form-data'>
@@ -44,18 +44,14 @@
  <div id="positioning">
   <h3 class="before">Step 2. Work it!</h3>
   <h3 class="after">Step 2. Worked!</h3>
-  <p>Reposition Ryan (no pun intended) until your heart's content.</p>
+  <p>Reposition Ryan (no pun intended) until your heart is content.</p>
  </div>
  <div id="sidebar_share">
   <h3>Step 3. Spread it!</h3>
-  <div class="before"><p><a href="[[ Current_URL ]]">Share on Facebook</a></div>
-  <div class="after"><p>Does an topical politcal joke unshared on the internet make a lol? Instead of trying to figure that out, why don't you just share your lovely creation on Facebook or with the direct link below?</p>
-  <a href="[[ fb_share ]]">Share on Facebook</a>
-  <input type="text" value="[[ upload_URL ]]" id="share_link" />
-  <p>Look, we all love what you made. But maybe you're having second thoughts. Perhaps it's too great. Here's your eject button. This link will let you delete your upload.</p>
-  <input type="text" value="[[ delete_link ]]" id="delete_link" />
-  <p>Use this wisely. What's done cannot be undone, etc., etc.,</p>
-  </div>
+  <p>Does an topical politcal joke unshared on the internet make a lol? Instead of trying to figure that out, why don't you just share your lovely creation on Facebook?</p>
+
+<p><script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer/sharer.php?u=http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}','sharer','toolbar=0,status=0,width=626,height=350');return false;}</script><a rel="nofollow" href="http://www.facebook.com/sharer/sharer.php?u=http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" onclick="return fbs_click()" target="_blank">Share on Facebook</a></p>
+
  </div>
 </div>
 

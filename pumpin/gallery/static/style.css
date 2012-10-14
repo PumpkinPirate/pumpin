@@ -51,6 +51,7 @@ body, html {
   text-align: center;
   font-size: 3em;
   color: #FFF;
+  font-weight: bold;
   width: 450px;
   background: #3b5998;
   border: 2px solid #5976b9;
@@ -92,6 +93,22 @@ body, html {
   width: 250px;
   float: left;
 }
+#sidebar_share a {
+  display: block;
+  margin: 25px 0 0;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 2em;
+  color: #FFF;
+  font-weight: bold;
+  background: #3b5998;
+  border: 2px solid #234480;
+  font-family: Helvetica, arial, sans-serif;
+  text-decoration: none;
+}
+#sidebar_share a:hover {
+  background: #5670b1;
+}
 #create { display: none; }
 
 #sidebar .after { display: none; }
@@ -109,7 +126,7 @@ body, html {
   padding: 0 0 5px;
   font-size: 2em;
   font-family: Helvetica, arial, sans-serif;
-  color: #999;
+  color: #666;
 }
 
 #sidebar .current h3 {
@@ -117,8 +134,14 @@ body, html {
 }
 
 #composer {
-  float: right;
+  width: 620px;
+  margin: 0 auto;
 }
+
+#overlay_1, #overlay_2, #overlay_3, #overlay_4, #overlay_5 {
+	cursor: move;
+}
+
 #overlay_choices {
   height: auto;
   overflow: hidden;
@@ -152,21 +175,22 @@ body, html {
 }
 #composer button {
   display: block;
-  border: 1px solid #a5011e;
-  background: #fc1d3c;
+  border: 1px solid #006400;
+  background: #127d19;
   font-size: 16px;
   border-radius: 3px;
   font-weight: bold;
   text-shadow: 1px 1px 1px 0;
-  padding: 5px 25px;
-  margin: 20px auto;
+  padding: 8px 30px;
+  margin: 20px 0 20px 20px;
+  float: right;
   cursor: pointer;
   position: relative;
   text-transform: uppercase;
   color: #FFF;
 }
 #composer button:hover {
-  background: #ff3c4a;
+  background: #3c9b37;
 }
 #overlay_choices {
   clear: both;
@@ -255,4 +279,16 @@ body, html {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#footer {
+  color: #AAA;
+  clear: both;
+  text-align: center;
+  padding: 50px 0 50px;
+  line-height: 1.61em;
+}
+#footer a {
+  color: #666;
+  text-decoration: none;
 }
