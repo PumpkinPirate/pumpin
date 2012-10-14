@@ -1,29 +1,29 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<meta property="og:image" content="{{ popular.0.thumbnail.url }}"/>
+{% endblock %}
+
 {% block content %}
 <div id="pictures">
  <div id="feature">
   <div id="overlay">
    <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
-   <input type="text" value="http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" />
+   <input id="feature_url" type="text" value="http://pumpingironwithpaulryan.com{{ popular.0.get_absolute_url }}" />
    <a href="{% url report secret=popular.0.secret %}" id="report">Report</a>
    <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
   </div>
-  <img src="{{ popular.0.image.url }}" />
+  <img id="feature_img" src="{{ popular.0.image.url }}" />
  </div>
  <div id="tabs">
   <a href="" id="popular" class="active">Popular</a>
   <a href="" id="latest">Latest</a>
  </div>
  <div id="popular_tray" class="tray">
-   {% for image in popular %}
-     <a href="{{ image.get_absolute_url }}"><img src="{{ image.thumbnail.url }}"></a>
-   {% endfor %}
+   {% with popular as object_list %}{% include "image_list.html" %}{% endwith %}
  </div>
  <div id="latest_tray" class="tray">
-   {% for image in latest %}
-     <a href="{{ image.get_absolute_url }}"><img src="{{ image.thumbnail.url }}"></a>
-   {% endfor %}
+   {% with latest as object_list %}{% include "image_list.html" %}{% endwith %}
  </div>
 </div>
 

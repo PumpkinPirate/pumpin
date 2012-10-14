@@ -39,6 +39,40 @@ function positionMouseup(event)
     return false
 }
 
+function setupTrayScroll(tab)
+{
+    var tray = $("#"+tab+"_tray")
+    tray.data("next_page", 1)
+    
+    function trayScroll(event)
+    {
+        if (tray[0].scrollHeight - tray.scrollTop() - tray.height() < 200)
+        {
+            loadPage(tab)
+        }
+    }
+    
+    tray.scroll(trayScroll)
+}
+
+
+function loadPage(tab)
+{
+    var tray = $("#"+tab+"_tray")
+    n = tray.data("next_page")
+    tray.unbind("scroll")
+    
+    $.get("/"+tab+"/"+n+"/", function (content) {
+        tray.append(content)
+        
+        if (content.length)
+        {
+            setupTrayScroll(tab)
+            tray.data("next_page", n+1)
+        }
+    })
+}
+
 $(function () {
     chooseOverlay()
     $("#id_overlay").change(chooseOverlay)
@@ -47,11 +81,11 @@ $(function () {
     
     $("#tabs a").click(function () {
         var self = $(this)
-        $("#tabs a").remove_class("active")
-        self.add_class("active")
+        $("#tabs a").removeClass("active")
+        self.addClass("active")
         
         $(".tray").hide()
-        $("#" + self.id() + "_tray").show()
+        $("#" + self.attr("id") + "_tray").show()
         
         return false
     })
@@ -69,5 +103,16 @@ $(function () {
         })
         
         return false
+    })
+    
+    setupTrayScroll("popular")
+    setupTrayScroll("latest")
+    
+    $(".tray img").click(function () {
+        var self = $(this)
+        console.log(this)
+        $("#feature_img").attr("src", self.attr("data-image-src"))
+        $("#feature_url").val("http://pumpingironwithpaulryan.com" + self.attr("data-page-url"))
+        $("#report").attr("href", self.attr("data-report-url"))
     })
 })

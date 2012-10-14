@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<meta property="og:image" content="{{ object.thumbnail.url }}"/>
+{% endblock %}
+
 {% block content %}
 <div id="feature">
  <div id="overlay">

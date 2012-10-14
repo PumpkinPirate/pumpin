@@ -19,7 +19,7 @@
   <button>I'm Done!</button>
 </form>
 
-<div id="overlay_choices" class="tray">
+<div id="overlay_choices">
   {% for i, img in form.overlay_choices %}
     <img data-overlay-id="{{i}}" src={{ STATIC_URL }}{{ img }}>
   {% endfor %}

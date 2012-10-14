@@ -10,6 +10,8 @@ from django.utils.decorators import method_decorator
 from pumpin.gallery.models import *
 from pumpin.gallery.forms import *
 
+page_size = 100
+
 class IndexView(CreateView):
     template_name = "index.html"
     model = UploadedImage
@@ -19,8 +21,30 @@ class IndexView(CreateView):
         data = super(IndexView, self).get_context_data(**kwargs)
         
         data['upload_form'] = UploadImageForm()
-        data['latest'] = SubmittedImage.public_objects().order_by("-timestamp")[:20]
-        data['popular'] = SubmittedImage.public_objects().order_by("-view_count")[:20]
+        data['latest'] = SubmittedImage.public_objects().order_by("-timestamp")[:page_size]
+        data['popular'] = SubmittedImage.public_objects().order_by("-view_count")[:page_size]
+        
+        return data
+
+class LatestPageView(TemplateView):
+    template_name = "image_list.html"
+    
+    def get_context_data(self, **kwargs):
+        page = int(self.kwargs['page'])
+        data = super(LatestPageView, self).get_context_data(**kwargs)
+        
+        data['object_list'] = SubmittedImage.public_objects().order_by("-timestamp")[page_size*page:page_size*(page+1)]
+        
+        return data
+
+class PopularPageView(TemplateView):
+    template_name = "image_list.html"
+    
+    def get_context_data(self, **kwargs):
+        page = int(self.kwargs['page'])
+        data = super(PopularPageView, self).get_context_data(**kwargs)
+        
+        data['object_list'] = SubmittedImage.public_objects().order_by("-view_count")[page_size*page:page_size*(page+1)]
         
         return data
 
@@ -81,6 +105,7 @@ class ModerateView(ListView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(ModerateView, self).dispatch(*args, **kwargs)
+
 
 
 class SetImageStatusView(SingleObjectMixin, View):

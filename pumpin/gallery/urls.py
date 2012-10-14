@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     url(r'^i/(?P<secret>[^/]+)/$', SumbittedImageView.as_view(), name='image_detail'),
     url(r'^i/(?P<secret>[^/]+)/report/$', ReportImageView.as_view(), name='report'),
     
+    url(r'^latest/(?P<page>\d+)/$', LatestPageView.as_view(), name='latest'),
+    url(r'^popular/(?P<page>\d+)/$', PopularPageView.as_view(), name='popular'),
+    
     url(r'^moderate/$', ModerateView.as_view(), name='moderate'),
     url(r'^moderate/(?P<secret>[^/]+)/$', SetImageStatusView.as_view(), name='set_status'),
 )
