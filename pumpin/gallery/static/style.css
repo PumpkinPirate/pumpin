@@ -233,8 +233,12 @@ body, html {
   width: 120px;
   height: 90px;
   margin: 10px;
-  border: 1px solid #CCC;
-  background: #EFEFEF;
+  border: 1px solid #999;
+  box-shadow: 0 0 2px rgba(0,0,0,.25);
+  cursor: pointer;
+}
+.tray img:hover {
+  border: 1px solid #333;
 }
 #latest_tray {
   display: none;
