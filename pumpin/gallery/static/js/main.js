@@ -110,9 +110,22 @@ $(function () {
     
     $(".tray img").click(function () {
         var self = $(this)
-        console.log(this)
         $("#feature_img").attr("src", self.attr("data-image-src"))
         $("#feature_url").val("http://pumpingironwithpaulryan.com" + self.attr("data-page-url"))
         $("#report").attr("href", self.attr("data-report-url"))
+        $(".fb_share").attr("href", 
+            "http://www.facebook.com/sharer/sharer.php?u=http://pumpingironwithpaulryan.com" +
+            self.attr("data-page-url"))
+    })
+    
+    $("#feature_url").click(function() {
+        $(this).select()
+    })
+    
+    $(".fb_share").click(function () {
+        u=location.href
+        t=document.title
+        window.open($(this).attr("href"),'sharer','toolbar=0,status=0,width=626,height=350')
+        return false
     })
 })
