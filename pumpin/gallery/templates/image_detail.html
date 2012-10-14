@@ -8,7 +8,7 @@
 <div id="feature">
  <div id="overlay">
   <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
-  <input type="text" value="http://pumpingironwithpaulryan.com{{ object.get_absolute_url }}" />
+  <input id="feature_url" type="text" value="http://pumpingironwithpaulryan.com{{ object.get_absolute_url }}" />
   <a href="{% url report secret=object.secret %}" id="report">Report</a>
   <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
  </div>

@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 def gen_secret(instance):
     if not instance.secret:
         chars = "0123456789abcdefghijklmnopABCDEFGHIJKLMNOP-_"
-        instance.secret = "".join(random.choice(chars) for i in xrange(16))
+        instance.secret = "".join(random.choice(chars) for i in xrange(8))
 
 def uploaded_image_path(instance, filename):
     extension = filename.split(".")[-1]
@@ -17,7 +17,7 @@ def uploaded_image_path(instance, filename):
 
 class UploadedImage(models.Model):
     image = models.ImageField(upload_to=uploaded_image_path)
-    secret = models.CharField(max_length=16, unique=True)
+    secret = models.CharField(max_length=8, unique=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_public = models.BooleanField(verbose_name="Display this image in the public gallery")
     
@@ -45,7 +45,7 @@ class SubmittedImage(models.Model):
     image = models.ImageField(upload_to=submitted_image_path)
     thumbnail = models.ImageField(upload_to=submitted_thumb_path)
     timestamp = models.DateTimeField(auto_now_add=True)
-    secret = models.CharField(max_length=16, unique=True)
+    secret = models.CharField(max_length=8, unique=True)
     is_public = models.BooleanField(verbose_name="Display this image in the public gallery")
     mod_status = models.IntegerField(choices=mod_choices, default=0)
     view_count = models.IntegerField(default=0)
