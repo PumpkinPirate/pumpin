@@ -55,7 +55,9 @@ class UploadImageForm(forms.ModelForm):
 
 class SubmitImageForm(forms.Form):
     overlay_choices = ((1, "img/overlay/ryan_01.png"),
-                       (2, "img/overlay/ryan_02.png"),)
+                       (2, "img/overlay/ryan_02.png"),
+                       (3, "img/overlay/ryan_03.png"),
+                       (4, "img/overlay/ryan_04.png"),)
     overlay_dict = dict(overlay_choices)
     
     
@@ -70,7 +72,9 @@ class SubmitImageForm(forms.Form):
         
         image = Image.open(self.uploaded_image.image.path)
         overlay = Image.open(join(settings.STATIC_ROOT, self.overlay_dict[int(self.cleaned_data['overlay'])]))
+        watermark = Image.open(join(settings.STATIC_ROOT, "img/overlay/watermark.png"))
         image.paste(overlay, (self.cleaned_data['x'], self.cleaned_data['y']), overlay)
+        image.paste(watermark, (0,0), watermark)
         
         outfile = StringIO()
         image.save(outfile, "jpeg", quality=90)
