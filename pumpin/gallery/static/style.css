@@ -14,10 +14,17 @@ body, html {
 
 #header h1 {
   text-align: center;
-  margin: 25px 0 35px;
+  margin: 35px 0 45px;
   font-size: 5.5em;
   letter-spacing: -2px;
   font-family: Helvetica, arial, sans-serif;
+  text-align: right;
+  height: 61px;
+  width: 900px;
+  background: url(/static/img/pumpingirnon_headline.gif) no-repeat top right;
+}
+#header h1 span {
+  display: none;
 }
 
 #pictures {
@@ -91,6 +98,10 @@ body, html {
 }
 
 #sidebar {
+  background: url('/static/img/pumpinpaul.jpg') no-repeat top center;
+  padding-top: 230px;
+  position: relative;
+  top: -128px;
   width: 250px;
   float: left;
 }
@@ -156,13 +167,12 @@ body, html {
   width: auto;
   height: 150px;
   cursor: pointer;
-  margin: 0 35px 0 0;
+  margin: 0 20px;
 }
 
 #upload {
   padding: 20px 0 25px;
-  border: 1px solid #CCC;
-  border-width: 1px 0;
+  border-bottom: 1px solid #CCC;
 }
 #positioning {
   padding: 0 0 25px;
