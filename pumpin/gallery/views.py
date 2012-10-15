@@ -23,8 +23,11 @@ class IndexView(CreateView):
         data['upload_form'] = UploadImageForm()
         data['latest'] = SubmittedImage.public_objects().order_by("-timestamp")[:page_size]
         data['popular'] = SubmittedImage.public_objects().order_by("-view_count")[:page_size]
-        data['feature_image'] = data['popular'][0]
-        
+        try:
+            data['feature_image'] = data['popular'][0]
+        except Exception:
+            data['feature_image'] = None
+
         return data
 
 class LatestPageView(TemplateView):
