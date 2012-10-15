@@ -1,17 +1,5 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% block extrahead %}
-<meta property="og:image" content="http://pumpingironwithpaulryan.com{{ object.thumbnail.url }}"/>
-{% endblock %}
-
-{% block content %}
-<div id="feature">
- <div id="overlay">
-  <a href="[[ fb_share_URL ]]" id="fb_overlay">Share on Facebook</a>
-  <input id="feature_url" type="text" value="http://pumpingironwithpaulryan.com{{ object.get_absolute_url }}" />
-  <a href="{% url report secret=object.secret %}" id="report">Report</a>
-  <a href="[[ javascript:delete; ]]" id="delete">Delete</a>
- </div>
- <img src="{{ object.image.url }}" />
-</div>
+<meta property="og:image" content="{{ feature_image.thumbnail.url }}"/>
 {% endblock %}

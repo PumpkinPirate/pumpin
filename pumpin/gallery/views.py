@@ -70,6 +70,8 @@ class EditImageView(FormView):
         return super(EditImageView, self).form_valid(form)
 
 class SumbittedImageView(IndexView):
+    template_name = "image_detail.html"
+    
     def get_context_data(self, **kwargs):
         data = super(SumbittedImageView, self).get_context_data(**kwargs)
         
