@@ -41,10 +41,6 @@ STATIC_ROOT = join(siteDir, 'static')
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = join(siteDir, 'media')
 
-TEMPLATE_DIRS = (
-    join(siteDir, 'templates/gullible'),
-    #join(siteDir, 'templates/nampv'),
-)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '$1%68n_!0%w^dxl(do*f*mwu$$9-e-uorr0ii_$^o!h2%uyqmi'

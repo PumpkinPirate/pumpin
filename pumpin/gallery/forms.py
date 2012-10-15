@@ -1,7 +1,7 @@
 from os.path import join
 from cStringIO import StringIO
 
-import Image
+from PIL import Image
 
 from django import forms
 from django.conf import settings
