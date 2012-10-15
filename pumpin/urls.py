@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 )
 
 
+# debug file server
 if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
