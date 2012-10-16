@@ -108,7 +108,7 @@ $(function () {
     setupTrayScroll("popular")
     setupTrayScroll("latest")
     
-    $(".tray img").click(function () {
+    $(".tray img").live("click", function () {
         var self = $(this)
         $("#feature_img").attr("src", self.attr("data-image-src"))
         $("#feature_url").val("http://pumpingironwithpaulryan.com" + self.attr("data-page-url"))
